@@ -1,0 +1,24 @@
+# Set the minimum version of CMake that can be used
+# To find the cmake version run
+# $ cmake --version
+cmake_minimum_required(VERSION 3.5)
+
+SET (CMAKE_C_COMPILER             "clang") # 填写绝对路径
+SET (CMAKE_C_FLAGS                "-Wall -std=c99")
+SET (CMAKE_C_FLAGS_DEBUG          "-g")
+SET (CMAKE_C_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
+SET (CMAKE_C_FLAGS_RELEASE        "-O4 -DNDEBUG")
+SET (CMAKE_C_FLAGS_RELWITHDEBINFO "-O2 -g")
+
+SET (CMAKE_CXX_COMPILER             "clang++") # 填写绝对路径
+SET (CMAKE_CXX_FLAGS                "-Wall -std=c++17")
+SET (CMAKE_CXX_FLAGS_DEBUG          "-g")
+SET (CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
+SET (CMAKE_CXX_FLAGS_RELEASE        "-O4 -DNDEBUG")
+SET (CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
+
+# Set the project name
+project (diffusion)
+
+# Add an executable
+add_executable(diffusion diffusion.cpp)

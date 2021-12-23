@@ -1,0 +1,3 @@
+C:/Users/zongz/work/cpp/lbm_lesson/diffusion/build/CMakeFiles/diffusion.dir
+C:/Users/zongz/work/cpp/lbm_lesson/diffusion/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/zongz/work/cpp/lbm_lesson/diffusion/build/CMakeFiles/ZERO_CHECK.dir

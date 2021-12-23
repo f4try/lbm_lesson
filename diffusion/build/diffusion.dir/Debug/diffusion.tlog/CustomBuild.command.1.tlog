@@ -1,0 +1,10 @@
+^C:\USERS\ZONGZ\WORK\CPP\LBM_LESSON\DIFFUSION\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/zongz/work/cpp/lbm_lesson/diffusion -BC:/Users/zongz/work/cpp/lbm_lesson/diffusion/build --check-stamp-file C:/Users/zongz/work/cpp/lbm_lesson/diffusion/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
