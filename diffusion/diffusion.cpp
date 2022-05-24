@@ -4,9 +4,9 @@
 #include <iomanip>
 #include <iostream>
 
-const int NX = 256, NY = 64;
+const int NX = 1020, NY = 712;
 int iter;
-const double XL = 60.E-6, YL = 20.E-6;
+const double XL = 20.E-6, YL = 20.E-6;
 const double DX = XL / float(NX - 1), DY = DX;
 const double DIFF_PHY = 1.e-5, DTAO = 1.5, TS = 0.2,
              DIFF_LAT = (1. - TS) * (DTAO - 0.5) / 2.,
@@ -42,7 +42,7 @@ void imread(std::string filename) {
   }
 }
 void solid_structure() {
-  imread("masks/xct_0414_left.txt");
+  // imread("masks/xct_0414_left.txt");
   for (int j = 0; j < NY + 2; j++) {
     ls[j][0] = 0;
     ls[j][1] = 0;
@@ -182,16 +182,19 @@ void output() {
   }
   const double delta = abs(sumc_last - sumc) / abs(sumc);
   // std::cout << sumc_last << "," << sumc << "," << delta << std::endl;
-  std::cout << iter << "," << con[NY / 2][NX / 2] << "," << delta << "," << sumc
-            << std::endl;
-  double c = 0;
-  for (int y = 2; y < NY / 5; y++) {
-    for (int x = 2; x < NX - 2; x++) {
-      c += con[y][x];
-    }
-  }
-  c /= (NX - 2 - 2) * (NY / 5 - 2);
-  std::cout << c << std::endl;
+  std::cout << iter << "," << iter * dt << "," << con[NY / 2][NX / 2] << ","
+            << delta << "," << sumc << std::endl;
+  // std::ofstream outfile("data.csv", std::ios::app);
+  // outfile << iter * dt << "," << con[NY / 2][NX / 2] << std::endl;
+  // outfile.close();
+  // double c = 0;
+  // for (int y = 2; y < NY / 5; y++) {
+  //   for (int x = 2; x < NX - 2; x++) {
+  //     c += con[y][x];
+  //   }
+  // }
+  // c /= (NX - 2 - 2) * (NY / 5 - 2);
+  // std::cout << c << std::endl;
   if (delta < 1.e-8) {
     std::ofstream outfile("concentration_cpp.dat", std::ios::out);
     outfile << "VARIABLES= X,Y,u,v,pre" << std::endl;
@@ -217,7 +220,7 @@ int main() {
     streamd();
     boundaryd();
     macrod();
-    if (iter % 1000 == 0) {
+    if (iter % 100 == 0) {
       output();
     }
   }
